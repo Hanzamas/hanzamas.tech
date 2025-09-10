@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fulfillment Produk - Hanzamas.tech</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/fulfillment.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--bg-darker), var(--bg-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-family);
+        }
+
+        .fulfillment-page-container {
+            max-width: 700px;
+            width: 90%;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: var(--space-3xl);
+            text-align: center;
+            box-shadow: var(--shadow-primary);
+            animation: fadeSlideIn 0.8s ease-out;
+        }
+
+        .page-title {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            margin-bottom: var(--space-lg);
+            color: var(--text-light);
+            text-align: center;
+            background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .fulfillment-container {
+            text-align: left;
+        }
+
+        .fulfillment-title {
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--space-xl);
+            color: var(--accent-color);
+            text-align: center;
+        }
+
+        .fulfillment-step {
+            display: flex;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .fulfillment-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .fulfillment-icon.paid {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+        }
+
+        .fulfillment-icon.processing {
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            color: white;
+        }
+
+        .fulfillment-icon.fulfilled {
+            background: linear-gradient(135deg, #2196F3, #1976D2);
+            color: white;
+        }
+
+        .fulfillment-icon.pending {
+            background: linear-gradient(135deg, #9E9E9E, #757575);
+            color: white;
+        }
+
+        .fulfillment-content {
+            flex-grow: 1;
+        }
+
+        .fulfillment-content h3 {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--space-md);
+            color: var(--text-light);
+        }
+
+        .fulfillment-content p {
+            font-size: var(--font-size-base);
+            color: var(--text-muted);
+            margin-bottom: var(--space-lg);
+            line-height: 1.6;
+        }
+
+        .user-info-form {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: var(--border-radius);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .user-info-form h4 {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--space-md);
+            color: var(--accent-color);
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: var(--space-lg);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: var(--space-sm);
+            color: var(--text-light);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: var(--border-radius);
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--text-light);
+            font-size: var(--font-size-base);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(229, 115, 147, 0.4);
+        }
+
+        .fulfillment-details {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            padding: var(--space-lg);
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            color: var(--text-muted);
+            font-size: 0.9em;
+        }
+
+        .detail-value {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .feedback-section {
+            margin-top: var(--space-xl);
+        }
+
+        .feedback-section h4 {
+            color: var(--accent-color);
+            margin-bottom: var(--space-md);
+        }
+
+        .rating-stars {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1.5rem;
+        }
+
+        .rating-stars i {
+            color: var(--accent-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .rating-stars i:hover {
+            transform: scale(1.2);
+        }
+
+        .btn-action {
+            padding: var(--space-md) var(--space-xl);
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            transition: var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(229, 115, 147, 0.4);
+        }
+
+        .btn-action:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        .fulfillment-error {
+            text-align: center;
+            padding: var(--space-2xl) 0;
+        }
+
+        .fulfillment-error i {
+            font-size: 3rem;
+            color: #f44336;
+            margin-bottom: var(--space-lg);
+        }
+
+        .fulfillment-error p {
+            color: var(--text-muted);
+            font-size: var(--font-size-lg);
+        }
+
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .navigation-actions {
+            margin-top: var(--space-3xl);
+            display: flex;
+            justify-content: center;
+            gap: var(--space-lg);
+        }
+
+        @media (max-width: 768px) {
+            .fulfillment-page-container {
+                width: 95%;
+                padding: var(--space-xl);
+            }
+
+            .page-title {
+                font-size: var(--font-size-2xl);
+            }
+
+            .fulfillment-step {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-lg);
+            }
+
+            .fulfillment-icon {
+                margin: 0 auto;
+            }
+
+            .navigation-actions {
+                flex-direction: column;
+                gap: var(--space-md);
+            }
+
+            .btn-action {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fulfillment-page-container">
+        <h1 class="page-title">Pengiriman Produk</h1>
+        
+        <!-- Fulfillment content will be dynamically inserted here -->
+        <div id="fulfillmentContent">
+            <!-- Content will be populated by JavaScript -->
+            <div class="fulfillment-step">
+                <div class="fulfillment-icon pending">
+                    <i class="fas fa-spinner fa-spin"></i>
+                </div>
+                <div class="fulfillment-content">
+                    <h3>Memuat Status Pesanan...</h3>
+                    <p>Mohon tunggu sebentar.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="navigation-actions">
+            <a href="/" class="btn-action btn-secondary">
+                <i class="fas fa-home"></i>
+                Kembali ke Beranda
+            </a>
+            <a href="/#contact" class="btn-action btn-primary">
+                <i class="fas fa-headset"></i>
+                Hubungi Support
+            </a>
+        </div>
+    </div>
+
+    <!-- Additional inline styles to ensure visibility -->
+    <style>
+        /* High-specificity form styles */
+        .fulfillment-content .user-info-form,
+        #fulfillmentContent .user-info-form,
+        .user-info-form.fulfillment-form {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            background-color: rgba(255, 255, 255, 0.2) !important;
+            border: 2px solid rgba(255, 255, 255, 0.4) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+            border-radius: 10px !important;
+            padding: 25px !important;
+            margin-top: 20px !important;
+            position: relative !important;
+            z-index: 100 !important;
+        }
+        
+        #fulfillmentContent .form-group input {
+            display: block !important;
+            width: 100% !important;
+            padding: 12px 15px !important;
+            background-color: rgba(255, 255, 255, 0.2) !important;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            color: white !important;
+            font-size: 16px !important;
+            margin-bottom: 15px !important;
+        }
+        
+        #fulfillmentContent .form-group label {
+            display: block !important;
+            color: white !important;
+            margin-bottom: 8px !important;
+            font-weight: 500 !important;
+        }
+        
+        #fulfillmentContent #submitUserInfo {
+            width: 100% !important;
+            padding: 14px !important;
+            font-size: 16px !important;
+            font-weight: 600 !important;
+            margin-top: 20px !important;
+        }
+    </style>
+    
+    <!-- JavaScript -->
+    <script type="module" src="js/config.js"></script>
+    <script type="module" src="js/core.js"></script>
+    <script type="module" src="js/order-management.js"></script>
+    <script type="module">
+        import { displayOrderFulfillment } from './js/order-management.js';
+        import { API_CONFIG } from './js/config.js';
+        
+        /**
+         * Get URL parameter value
+         */
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Check fulfillment status from backend
+        async function checkFulfillmentFromBackend(merchantOrderId) {
+            try {
+                // First try with our new API endpoint
+                const response = await fetch(`${API_CONFIG.BACKEND_URL}/api/fulfillment/${merchantOrderId}`);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.found) {
+                        // Update localStorage with data from backend
+                        const orders = JSON.parse(localStorage.getItem('hanzamas_orders') || '[]');
+                        const existingOrderIndex = orders.findIndex(o => o.merchantOrderId === merchantOrderId);
+                        
+                        // Create or update order in localStorage
+                        const orderData = {
+                            merchantOrderId: data.merchantOrderId,
+                            status: data.status === 'SUCCESS' ? 'PAID' : data.status,
+                            productName: data.productName || 'Produk Digital',
+                            amount: data.amount,
+                            reference: data.reference,
+                            paymentMethod: data.paymentMethod,
+                            fulfillmentStatus: data.fulfillmentStatus || 'PENDING',
+                            lastUpdated: data.timestamp
+                        };
+                        
+                        if (existingOrderIndex >= 0) {
+                            orders[existingOrderIndex] = {
+                                ...orders[existingOrderIndex],
+                                ...orderData
+                            };
+                        } else {
+                            orders.push(orderData);
+                        }
+                        
+                        localStorage.setItem('hanzamas_orders', JSON.stringify(orders));
+                        return true;
+                    }
+                }
+                return false;
+            } catch (error) {
+                console.error('Error checking fulfillment status:', error);
+                return false;
+            }
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Get order ID from URL or localStorage
+            const merchantOrderId = getUrlParameter('merchantOrderId') || localStorage.getItem('currentOrderId');
+            
+            if (merchantOrderId) {
+                // Try to get order data from backend first
+                const backendSuccess = await checkFulfillmentFromBackend(merchantOrderId);
+                
+                // Display fulfillment UI (will use data from localStorage, which may have been updated from backend)
+                displayOrderFulfillment('fulfillmentContent', merchantOrderId);
+                
+                // Additional script to ensure form visibility
+                setTimeout(() => {
+                    const userInfoForm = document.querySelector('.user-info-form');
+                    if (userInfoForm) {
+                        console.log('Form visibility check');
+                        userInfoForm.style.display = 'block';
+                        userInfoForm.style.visibility = 'visible';
+                        userInfoForm.style.opacity = '1';
+                        userInfoForm.style.background = 'rgba(255, 255, 255, 0.2)';
+                        userInfoForm.style.border = '2px solid rgba(255, 255, 255, 0.4)';
+                        userInfoForm.style.padding = '20px';
+                        
+                        const formInputs = userInfoForm.querySelectorAll('input');
+                        formInputs.forEach(input => {
+                            input.style.display = 'block';
+                            input.style.width = '100%';
+                            input.style.padding = '12px';
+                            input.style.background = 'rgba(255, 255, 255, 0.2)';
+                            input.style.color = 'white';
+                            input.style.border = '1px solid rgba(255, 255, 255, 0.4)';
+                        });
+                    }
+                }, 500);
+            } else {
+                // No order ID found
+                document.getElementById('fulfillmentContent').innerHTML = `
+                    <div class="fulfillment-error">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>Tidak ada pesanan yang ditemukan. Silakan kembali ke Digital Store untuk melakukan pembelian.</p>
+                        <div style="margin-top: 20px">
+                            <a href="/#store" class="btn-action btn-primary">
+                                <i class="fas fa-shopping-cart"></i>
+                                Digital Store
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

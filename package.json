@@ -1,0 +1,46 @@
+{
+  "name": "hanzamas-tech-portfolio",
+  "version": "1.0.0",
+  "description": "Modern IT portfolio landing page dengan nuansa anime",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=3000 --open=/index.html",
+    "dev": "live-server --port=3000 --open=/index.html --watch=.",
+    "mock-server": "node mock-server.js",
+    "dev-with-functions": "concurrently \"npm run dev\" \"npm run mock-server\"",
+    "test-email": "node test-email.js",
+    "build": "echo 'Building static files...' && mkdir -p dist && cp -r * dist/",
+    "deploy": "echo 'Deploying to production...'",
+    "lint": "echo 'Running linters...'",
+    "test": "echo 'Running tests...'"
+  },
+  "keywords": [
+    "portfolio",
+    "landing-page",
+    "anime",
+    "modern",
+    "responsive",
+    "html5",
+    "css3",
+    "javascript",
+    "it-professional"
+  ],
+  "author": "Hanzamas",
+  "license": "MIT",
+  "dependencies": {
+    "nodemailer": "^6.9.5"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/hanzamas-tech-portfolio.git"
+  },
+  "homepage": "https://hanzamas.tech",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

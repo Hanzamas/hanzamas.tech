@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran Gagal - Hanzamas.tech</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--bg-darker), var(--bg-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-family);
+        }
+
+        .failure-container {
+            max-width: 600px;
+            width: 90%;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: var(--space-3xl);
+            text-align: center;
+            box-shadow: var(--shadow-primary);
+            animation: failureSlideIn 0.8s ease-out;
+        }
+
+        .failure-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto var(--space-xl);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            background: linear-gradient(135deg, #f44336, #d32f2f);
+            color: white;
+            animation: failureShake 1s ease-out;
+        }
+
+        .failure-title {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            margin-bottom: var(--space-lg);
+            color: #f44336;
+            text-shadow: 0 2px 10px rgba(244, 67, 54, 0.3);
+        }
+
+        .failure-message {
+            font-size: var(--font-size-lg);
+            color: var(--text-muted);
+            margin-bottom: var(--space-2xl);
+            line-height: 1.6;
+        }
+
+        .error-details {
+            background: rgba(244, 67, 54, 0.1);
+            border: 1px solid rgba(244, 67, 54, 0.3);
+            border-radius: var(--border-radius);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-2xl);
+            text-align: left;
+        }
+
+        .error-details h3 {
+            color: #f44336;
+            margin-bottom: var(--space-lg);
+            text-align: center;
+            font-size: var(--font-size-xl);
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-sm) 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-size: var(--font-size-sm);
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .detail-value {
+            font-size: var(--font-size-base);
+            color: var(--text-light);
+            font-weight: 600;
+            font-family: monospace;
+        }
+
+        .help-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .help-section h4 {
+            color: var(--accent-color);
+            margin-bottom: var(--space-md);
+            font-size: var(--font-size-lg);
+        }
+
+        .help-list {
+            text-align: left;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .help-list li {
+            padding: var(--space-sm) 0;
+            color: var(--text-muted);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-sm);
+        }
+
+        .help-list li i {
+            color: var(--accent-color);
+            margin-top: 2px;
+        }
+
+        .failure-actions {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-failure {
+            padding: var(--space-md) var(--space-xl);
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #f44336, #d32f2f);
+            color: white;
+        }
+
+        .btn-failure:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(229, 115, 147, 0.4);
+        }
+
+        @keyframes failureSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes failureShake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            10%, 30%, 50%, 70%, 90% {
+                transform: translateX(-10px);
+            }
+            20%, 40%, 60%, 80% {
+                transform: translateX(10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .failure-container {
+                width: 95%;
+                padding: var(--space-xl);
+            }
+
+            .failure-icon {
+                width: 100px;
+                height: 100px;
+                font-size: 3rem;
+            }
+
+            .failure-title {
+                font-size: var(--font-size-2xl);
+            }
+
+            .failure-actions {
+                flex-direction: column;
+            }
+
+            .btn-failure {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .detail-row {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-xs);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="failure-container">
+        <div class="failure-icon">
+            <i class="fas fa-times"></i>
+        </div>
+        
+        <h1 class="failure-title">Pembayaran Gagal</h1>
+        
+        <p class="failure-message">
+            Maaf, terjadi masalah saat memproses pembayaran Anda. 
+            Transaksi tidak dapat diselesaikan pada saat ini.
+        </p>
+
+        <div class="error-details" id="errorDetails">
+            <h3><i class="fas fa-exclamation-triangle"></i> Detail Error</h3>
+            <div class="detail-row">
+                <span class="detail-label">Order ID</span>
+                <span class="detail-value" id="orderId">-</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Nomor Referensi</span>
+                <span class="detail-value" id="referenceId">-</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Status</span>
+                <span class="detail-value" style="color: #f44336;">GAGAL</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Waktu</span>
+                <span class="detail-value" id="failureTime">-</span>
+            </div>
+        </div>
+
+        <div class="help-section">
+            <h4><i class="fas fa-lightbulb"></i> Kemungkinan Penyebab</h4>
+            <ul class="help-list">
+                <li>
+                    <i class="fas fa-credit-card"></i>
+                    <span>Saldo atau limit kartu tidak mencukupi</span>
+                </li>
+                <li>
+                    <i class="fas fa-wifi"></i>
+                    <span>Koneksi internet terputus saat transaksi</span>
+                </li>
+                <li>
+                    <i class="fas fa-clock"></i>
+                    <span>Transaksi timeout atau melebihi batas waktu</span>
+                </li>
+                <li>
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Transaksi ditolak oleh bank atau penyedia pembayaran</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="failure-actions">
+            <button id="returnToDuitkuBtn" class="btn-failure btn-danger">
+                <i class="fas fa-credit-card"></i>
+                Kembali ke Halaman Pembayaran
+            </button>
+            <a href="/#store" class="btn-failure btn-secondary">
+                <i class="fas fa-redo"></i>
+                Pilih Produk Lain
+            </a>
+            <a href="/#contact" class="btn-failure btn-secondary">
+                <i class="fas fa-headset"></i>
+                Hubungi Dukungan
+            </a>
+            <a href="/" class="btn-failure btn-primary">
+                <i class="fas fa-home"></i>
+                Kembali ke Beranda
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Extract URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Populate error details
+        function populateErrorDetails() {
+            const merchantOrderId = getUrlParameter('merchantOrderId');
+            const reference = getUrlParameter('reference');
+            const resultCode = getUrlParameter('resultCode');
+
+            // Validate that we have a valid failure (non-00 result code)
+            if (resultCode === '00') {
+                // This shouldn't happen - redirect to payment status page
+                window.location.href = '/payment-status.html?merchantOrderId=' + merchantOrderId;
+                return;
+            }
+
+            document.getElementById('orderId').textContent = merchantOrderId || 'N/A';
+            document.getElementById('referenceId').textContent = reference || 'N/A';
+            document.getElementById('failureTime').textContent = new Date().toLocaleString('id-ID');
+
+            // Update local storage for order tracking if we have an order ID
+            if (merchantOrderId) {
+                try {
+                    // Get existing orders
+                    const orders = JSON.parse(localStorage.getItem('hanzamas_orders') || '[]');
+                    const existingOrderIndex = orders.findIndex(o => o.merchantOrderId === merchantOrderId);
+                    
+                    // Update order status if found
+                    if (existingOrderIndex >= 0) {
+                        orders[existingOrderIndex].status = 'FAILED';
+                        orders[existingOrderIndex].lastUpdated = new Date().toISOString();
+                        localStorage.setItem('hanzamas_orders', JSON.stringify(orders));
+                    }
+                } catch (error) {
+                    console.error('Error updating order status:', error);
+                }
+            }
+
+            // Clean up current order ID reference
+            localStorage.removeItem('currentOrderId');
+        }
+
+        // Handle back button navigation
+        const isFromBackButton = (function() {
+            try {
+                // Modern browsers
+                if (performance && performance.getEntriesByType && performance.getEntriesByType('navigation').length) {
+                    const navEntry = performance.getEntriesByType('navigation')[0];
+                    return navEntry.type === 'back_forward';
+                }
+                // Legacy fallback
+                else if (window.performance && window.performance.navigation) {
+                    return window.performance.navigation.type === 2;
+                }
+            } catch (e) {
+                console.error('Error detecting navigation type:', e);
+            }
+            return false;
+        })();
+        
+        /**
+         * Return to Duitku payment page
+         */
+        function returnToDuitkuPayment() {
+            const lastPaymentUrl = localStorage.getItem('lastPaymentUrl');
+            if (lastPaymentUrl) {
+                window.location.href = lastPaymentUrl;
+            } else {
+                // Fallback if URL not found
+                alert('URL pembayaran tidak ditemukan. Silakan coba bayar ulang dari beranda.');
+                window.location.href = '/index.html#store';
+            }
+        }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            const merchantOrderId = getUrlParameter('merchantOrderId');
+            
+            // If coming from back button, redirect to payment status page for verification
+            if (isFromBackButton && merchantOrderId) {
+                window.location.href = '/payment-status.html?merchantOrderId=' + merchantOrderId;
+                return;
+            }
+            
+            // Create a new history entry to track this was a direct load
+            history.replaceState({directLoad: true}, document.title);
+            
+            // Normal initialization
+            populateErrorDetails();
+            
+            // Setup return to Duitku button
+            const returnToDuitkuBtn = document.getElementById('returnToDuitkuBtn');
+            if (returnToDuitkuBtn) {
+                returnToDuitkuBtn.addEventListener('click', returnToDuitkuPayment);
+            }
+        });
+    </script>
+</body>
+</html>

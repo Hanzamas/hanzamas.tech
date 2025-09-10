@@ -1,0 +1,89 @@
+/* Rating widget styles */
+.rating-widget {
+  margin: 20px 0;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.rating-widget h3 {
+  margin-top: 0;
+  color: #673AB7;
+}
+
+.rating-widget .stars {
+  display: flex;
+  justify-content: center;
+  font-size: 28px;
+  margin: 15px 0;
+}
+
+.rating-widget .star {
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.2s;
+  padding: 0 5px;
+}
+
+.rating-widget .star:hover,
+.rating-widget .star.hover {
+  color: #FFD700;
+}
+
+.rating-widget .star.active {
+  color: #FFD700;
+}
+
+.rating-widget .rating-comment {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.rating-widget .submit-rating {
+  background: #673AB7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.rating-widget .submit-rating:hover {
+  background: #5e35b1;
+}
+
+.rating-widget .submit-rating:disabled {
+  background: #9e9e9e;
+  cursor: not-allowed;
+}
+
+.rating-success {
+  text-align: center;
+}
+
+.rating-success .final-rating {
+  font-size: 32px;
+  color: #FFD700;
+  margin: 15px 0;
+}
+
+/* Rating display for product pages */
+.product-rating {
+  display: inline-block;
+  color: #FFD700;
+  font-size: 18px;
+}
+
+.rating-count {
+  color: #666;
+  font-size: 14px;
+  margin-left: 5px;
+}

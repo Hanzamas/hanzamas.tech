@@ -1,0 +1,84 @@
+<!-- SVG Placeholder untuk Anime Character -->
+<svg width="400" height="500" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="hairGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff9ff3;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f368e0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#bf77f6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="skinGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd3a5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fd9853;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="clothesGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background glow -->
+  <circle cx="200" cy="250" r="180" fill="url(#hairGradient)" opacity="0.2"/>
+  
+  <!-- Character body -->
+  <ellipse cx="200" cy="400" rx="80" ry="90" fill="url(#clothesGradient)"/>
+  
+  <!-- Arms -->
+  <ellipse cx="130" cy="380" rx="25" ry="60" fill="url(#clothesGradient)"/>
+  <ellipse cx="270" cy="380" rx="25" ry="60" fill="url(#clothesGradient)"/>
+  
+  <!-- Hands -->
+  <circle cx="130" cy="440" r="15" fill="url(#skinGradient)"/>
+  <circle cx="270" cy="440" r="15" fill="url(#skinGradient)"/>
+  
+  <!-- Face -->
+  <ellipse cx="200" cy="200" rx="70" ry="80" fill="url(#skinGradient)"/>
+  
+  <!-- Hair back -->
+  <path d="M130 150 Q200 100 270 150 Q280 200 270 250 Q200 300 130 250 Q120 200 130 150" fill="url(#hairGradient)"/>
+  
+  <!-- Hair front -->
+  <path d="M150 140 Q200 120 250 140 Q240 180 200 170 Q160 180 150 140" fill="url(#hairGradient)"/>
+  
+  <!-- Eyes -->
+  <ellipse cx="180" cy="190" rx="8" ry="12" fill="#000"/>
+  <ellipse cx="220" cy="190" rx="8" ry="12" fill="#000"/>
+  <circle cx="182" cy="188" r="3" fill="#fff"/>
+  <circle cx="222" cy="188" r="3" fill="#fff"/>
+  
+  <!-- Mouth -->
+  <path d="M190 210 Q200 220 210 210" stroke="#ff6b9d" stroke-width="2" fill="none"/>
+  
+  <!-- Blush -->
+  <circle cx="160" cy="200" r="8" fill="#ff6b9d" opacity="0.3"/>
+  <circle cx="240" cy="200" r="8" fill="#ff6b9d" opacity="0.3"/>
+  
+  <!-- Hair strands -->
+  <path d="M180 140 Q185 120 190 140" stroke="url(#hairGradient)" stroke-width="3" fill="none"/>
+  <path d="M200 135 Q205 115 210 135" stroke="url(#hairGradient)" stroke-width="3" fill="none"/>
+  <path d="M220 140 Q225 120 230 140" stroke="url(#hairGradient)" stroke-width="3" fill="none"/>
+  
+  <!-- Accessories -->
+  <rect x="190" y="180" width="20" height="4" fill="#ff6b9d" rx="2"/>
+  
+  <!-- Sparkles -->
+  <g fill="#fff" opacity="0.8">
+    <circle cx="150" cy="120" r="2"/>
+    <circle cx="280" cy="140" r="1.5"/>
+    <circle cx="320" cy="200" r="1"/>
+    <circle cx="80" cy="180" r="1.5"/>
+    <circle cx="90" cy="250" r="1"/>
+  </g>
+  
+  <!-- Animation sparkles -->
+  <g fill="#ff6b9d" opacity="0.6">
+    <circle cx="160" cy="100" r="1">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="300" cy="160" r="1.5">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="70" cy="200" r="1">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>

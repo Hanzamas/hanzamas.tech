@@ -1,0 +1,49 @@
+[build]
+  # Directory to publish (relative to root of your repo)
+  publish = "."
+  # Directory with serverless functions
+  functions = "netlify/functions"
+
+[functions]
+  # Directory to process node_modules
+  node_bundler = "esbuild"
+
+# Redirects and rewrites
+[[redirects]]
+  from = "/payment-status"
+  to = "/payment-status.html"
+  status = 200
+
+[[redirects]]
+  from = "/payment-success"
+  to = "/payment-success.html"
+  status = 200
+
+[[redirects]]
+  from = "/payment-failure"
+  to = "/payment-failure.html"
+  status = 200
+
+# Environment variables
+[build.environment]
+  NODE_VERSION = "18"
+  # Add example environment variables to show what's needed
+  # These will be overridden by actual values in Netlify dashboard
+  # SMTP_HOST = "smtp.gmail.com"
+  # SMTP_PORT = "587"
+  # SMTP_SECURE = "false"
+  # SMTP_USER = "your-email@example.com"
+  # SMTP_PASS = "your-password-here"
+  # ADMIN_EMAIL = "admin@hanzamas.tech"
+
+# Headers to set on certain paths
+[[headers]]
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
+
+# Make sure functions are accessible
+[[redirects]]
+  from = "/.netlify/functions/*"
+  to = "/.netlify/functions/:splat"
+  status = 200

@@ -1,0 +1,15 @@
+# Netlify redirects file
+# For clean URLs without .html extension
+
+# Payment pages
+/payment-success  /payment-success.html  200
+/payment-failure  /payment-failure.html  200
+/payment-status   /payment-status.html   200
+
+# Redirect .html to clean URLs (optional)
+/payment-success.html  /payment-success  301
+/payment-failure.html  /payment-failure  301
+/payment-status.html   /payment-status   301
+
+# SPA fallback for other routes
+/*  /index.html  200
