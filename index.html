@@ -20,1044 +20,780 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <!-- Modular Stylesheets -->
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
     
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 </head>
 <body>
-    <!-- Loading Animation -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loading-content">
-            <div class="loading-logo">
-                <span class="glitch" data-text="HANZAMAS">HANZAMAS</span>
-            </div>
-            <div class="loading-bar">
-                <div class="loading-progress"></div>
-            </div>
-        </div>
-    </div>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-text">Hanzamas<span class="dot">.</span>tech</span>
-            </div>            <ul class="nav-menu" id="navMenu">
-                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
-                <li class="nav-item"><a href="#store" class="nav-link">Digital Store</a></li>
-                <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
-                <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
-                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            <div class="nav__brand">
+                <span class="nav__logo">Hanzamas<span class="nav__dot">.</span>tech</span>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <input type="checkbox" id="mobile-menu-toggle" class="nav__toggle" aria-label="Toggle mobile menu">
+            <label for="mobile-menu-toggle" class="nav__hamburger">
+                <span class="nav__bar"></span>
+                <span class="nav__bar"></span>
+                <span class="nav__bar"></span>
+            </label>
+            
+            <!-- Navigation Menu -->
+            <ul class="nav__menu">
+                <li class="nav__item">
+                    <a href="#hero" class="nav__link">Home</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#about" class="nav__link">About</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#services" class="nav__link">Services</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#portfolio" class="nav__link">Portfolio</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#skills" class="nav__link">Skills</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#contact" class="nav__link">Contact</a>
+                </li>
             </ul>
-            <div class="hamburger" id="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
         </div>
-    </nav>    <!-- Hero Section -->
-    <section id="home" class="hero section">
-        <div class="hero-background">
-            <div class="animated-bg"></div>
-            <div class="particles" id="particles"></div>
-        </div>
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">
-                    <span class="typing-text" id="typingText"></span>
-                    <span class="cursor">|</span>
-                </h1>
-                <p class="hero-subtitle">Passionate IT Professional & Developer</p>
-                <p class="hero-description">
-                    Crafting digital experiences with modern technologies and creative solutions
-                </p>
-                <div class="hero-buttons">
-                    <a href="#portfolio" class="btn btn-primary">
-                        <span>View My Work</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <span>Get In Touch</span>
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-            </div>            <div class="hero-image">
-                <div class="character-container">
-                    <div class="character-glow"></div>
-                    <img src="assets/character.png" alt="Anime Character" class="character-img" id="characterImg" 
-                         onerror="this.src='assets/character.png'">
-                    <div class="character-effects">
-                        <div class="floating-sparkles"></div>
-                        <div class="aura-effect"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="scroll-line"></div>
-            <span>Scroll Down</span>
-        </div>
-    </section>    <!-- About Section -->
-    <section id="about" class="about section" data-aos="fade-up">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">Get to know me better</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <div class="about-card">
-                        <h3>Hello! I'm a passionate IT professional</h3>
-                        <p>
-                            With years of experience in software development, system administration, and digital innovation, 
-                            I specialize in creating robust solutions that bridge technology and creativity.
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="hero__container">
+                <div class="hero__content">
+                    <div class="hero__text">
+                        <h1 class="hero__title">
+                            <span class="hero__greeting">Hello, I'm a</span>
+                            <span class="hero__role" data-text="Junior IT Professional">Junior IT Professional</span>
+                        </h1>
+                        <p class="hero__subtitle">Passionate Developer & Technology Enthusiast</p>
+                        <p class="hero__description">
+                            Crafting digital experiences with modern technologies and creative solutions. 
+                            Specializing in mobile development, web applications, and system administration.
                         </p>
-                        <p>
-                            My journey in IT has led me through various domains including web development, 
-                            mobile applications, cloud infrastructure, and emerging technologies. I believe in 
-                            continuous learning and staying updated with the latest trends in technology.
-                        </p>
-                        <div class="about-stats">
-                            <div class="stat-item">
-                                <span class="stat-number" data-count="50">0</span>
-                                <span class="stat-label">Projects Completed</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number" data-count="5">0</span>
-                                <span class="stat-label">Years Experience</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number" data-count="30">0</span>
-                                <span class="stat-label">Happy Clients</span>
-                            </div>
+                        <div class="hero__actions">
+                            <a href="#portfolio" class="btn btn--primary">
+                                <span>View My Work</span>
+                                <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                            </a>
+                            <a href="#contact" class="btn btn--secondary">
+                                <span>Get In Touch</span>
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="hero__visual">
+                        <div class="hero__character">
+                            <img src="assets/character.png" alt="Anime character representing Hanzamas" class="hero__image">
+                            <div class="hero__glow" aria-hidden="true"></div>
                         </div>
                     </div>
                 </div>
-                <div class="about-image">
-                    <div class="image-container">
-                        <div class="floating-elements">
-                            <div class="floating-icon"><i class="fas fa-code"></i></div>
-                            <div class="floating-icon"><i class="fas fa-database"></i></div>
-                            <div class="floating-icon"><i class="fas fa-cloud"></i></div>
-                            <div class="floating-icon"><i class="fas fa-mobile-alt"></i></div>
-                        </div>
+                
+                <!-- Scroll Indicator -->
+                <div class="hero__scroll" aria-hidden="true">
+                    <div class="scroll-indicator">
+                        <span class="scroll-indicator__text">Scroll Down</span>
+                        <div class="scroll-indicator__line"></div>
                     </div>
                 </div>
             </div>
-        </div>    </section>    <!-- Services Section -->
-    <section id="services" class="services section" data-aos="fade-up">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Services</h2>
-                <p class="section-subtitle">What I can do for you</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
-                        <div class="icon-bg"></div>
-                    </div>
-                    <h3>Web Development</h3>
-                    <p>Custom websites and web applications built with modern technologies and best practices.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Responsive Design</li>
-                        <li><i class="fas fa-check"></i> Modern Frameworks</li>
-                        <li><i class="fas fa-check"></i> SEO Optimized</li>
-                        <li><i class="fas fa-check"></i> Fast Loading</li>
-                    </ul>
-                    <div class="service-hover-effect"></div>
-                </div>
+        </section>
 
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                        <div class="icon-bg"></div>
-                    </div>
-                    <h3>Mobile Development</h3>
-                    <p>Cross-platform mobile applications that work seamlessly on iOS and Android devices.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Cross-Platform</li>
-                        <li><i class="fas fa-check"></i> Native Performance</li>
-                        <li><i class="fas fa-check"></i> Offline Support</li>
-                        <li><i class="fas fa-check"></i> Push Notifications</li>
-                    </ul>
-                    <div class="service-hover-effect"></div>
-                </div>
-
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-icon">
-                        <i class="fas fa-cloud"></i>
-                        <div class="icon-bg"></div>
-                    </div>
-                    <h3>Cloud Solutions</h3>
-                    <p>Scalable cloud infrastructure and deployment solutions for your applications.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> AWS/Azure Setup</li>
-                        <li><i class="fas fa-check"></i> Auto Scaling</li>
-                        <li><i class="fas fa-check"></i> Load Balancing</li>
-                        <li><i class="fas fa-check"></i> Monitoring</li>
-                    </ul>
-                    <div class="service-hover-effect"></div>
-                </div>
-
-                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
-                        <div class="icon-bg"></div>
-                    </div>
-                    <h3>Cybersecurity</h3>
-                    <p>Comprehensive security solutions to protect your digital assets and data.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Security Audits</li>
-                        <li><i class="fas fa-check"></i> Penetration Testing</li>
-                        <li><i class="fas fa-check"></i> Compliance</li>
-                        <li><i class="fas fa-check"></i> Training</li>
-                    </ul>
-                    <div class="service-hover-effect"></div>
-                </div>
-
-                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="service-icon">
-                        <i class="fas fa-database"></i>
-                        <div class="icon-bg"></div>
-                    </div>
-                    <h3>Database Design</h3>
-                    <p>Efficient database architecture and optimization for high-performance applications.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Schema Design</li>
-                        <li><i class="fas fa-check"></i> Performance Tuning</li>
-                        <li><i class="fas fa-check"></i> Data Migration</li>
-                        <li><i class="fas fa-check"></i> Backup Strategy</li>
-                    </ul>
-                    <div class="service-hover-effect"></div>
-                </div>
-
-                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
-                    <div class="service-icon">
-                        <i class="fas fa-users-cog"></i>
-                        <div class="icon-bg"></div>
-                    </div>
-                    <h3>IT Consulting</h3>
-                    <p>Strategic technology consulting to help your business grow and scale efficiently.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Technology Strategy</li>
-                        <li><i class="fas fa-check"></i> Digital Transformation</li>
-                        <li><i class="fas fa-check"></i> Process Optimization</li>
-                        <li><i class="fas fa-check"></i> Team Training</li>
-                    </ul>
-                    <div class="service-hover-effect"></div>
-                </div>
-            </div>
-        </div>
-    </section>    <!-- Portfolio Section -->
-    <!-- Digital Store Section (Added for Duitku integration) -->
-    <section id="store" class="services section" data-aos="fade-up">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Digital Store</h2>
-                <p class="section-subtitle">Produk dan layanan digital untuk mendukung proyek Anda</p>
-            </div>
-            <div class="services-grid">
-                <!-- Product 1 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-icon">
-                        <i class="fas fa-code"></i>
-                        <div class="icon-bg"></div>
-                    </div>
-                    <h3>Paket Konsultasi IT (1 Jam)</h3>
-                    <p>Sesi konsultasi privat 1 jam membahas strategi teknis, arsitektur, atau troubleshooting proyek Anda.</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-check-circle"></i> Konsultasi langsung dengan developer berpengalaman via Google Meet atau Zoom</li>
-                        <li><i class="fas fa-check-circle"></i> Analisis kebutuhan teknis dan rekomendasi solusi untuk proyek Anda</li>
-                        <li><i class="fas fa-check-circle"></i> Troubleshooting masalah pada website, aplikasi, atau infrastruktur IT</li>
-                        <li><i class="fas fa-check-circle"></i> Diskusi arsitektur sistem dan database optimal</li>
-                        <li><i class="fas fa-check-circle"></i> Sertifikat PDF konsultasi dan ringkasan rekomendasi</li>
-                    </ul>
-                    <div class="product-details-duitku">
-                        <p class="price-duitku">Rp 150.000</p>
-                        <button class="btn btn-primary btn-buy-duitku" data-name="Konsultasi IT 1 Jam" data-price="150000">
-                            <span>Beli Sekarang</span>
-                            <i class="fas fa-shopping-cart"></i>
-                        </button>
-                    </div>
-                </div>
-                <!-- Product 2 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-icon">
-                        <i class="fas fa-file-alt"></i>
-                        <div class="icon-bg"></div>
-                    </div>
-                    <h3>Template Portofolio Premium</h3>
-                    <p>Source code lengkap template portofolio modern ini untuk kustomisasi pribadi Anda.</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-check-circle"></i> Template web portofolio responsif dengan animasi modern</li>
-                        <li><i class="fas fa-check-circle"></i> Kode HTML5, CSS3, dan JavaScript yang terstruktur dan terdokumentasi</li>
-                        <li><i class="fas fa-check-circle"></i> Kompatibel dengan semua browser modern (Chrome, Firefox, Safari, Edge)</li>
-                        <li><i class="fas fa-check-circle"></i> Panduan instalasi dan kustomisasi lengkap (PDF)</li>
-                        <li><i class="fas fa-check-circle"></i> Dukungan teknis selama 30 hari setelah pembelian</li>
-                        <li><i class="fas fa-check-circle"></i> Update gratis selama 1 tahun</li>
-                    </ul>
-                    <div class="product-details-duitku">
-                        <p class="price-duitku">Rp 75.000</p>
-                        <button class="btn btn-primary btn-buy-duitku" data-name="Template Portofolio Premium" data-price="750">
-                            <span>Beli Sekarang</span>
-                            <i class="fas fa-shopping-cart"></i>
-                        </button>
-                    </div>
-                </div>
-                <!-- Product 3 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
-                        <div class="icon-bg"></div>
-                    </div>
-                    <h3>Analisis Keamanan Web</h3>
-                    <p>Audit keamanan dasar untuk website Anda mencakup pengecekan celah umum & rekomendasi.</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-check-circle"></i> Analisis mendalam terhadap kerentanan OWASP Top 10</li>
-                        <li><i class="fas fa-check-circle"></i> Pemindaian celah keamanan pada server dan aplikasi web</li>
-                        <li><i class="fas fa-check-circle"></i> Evaluasi konfigurasi SSL/TLS dan perlindungan data</li>
-                        <li><i class="fas fa-check-circle"></i> Uji penetrasi dasar untuk mendeteksi potensi risiko</li>
-                        <li><i class="fas fa-check-circle"></i> Laporan keamanan terperinci (15-20 halaman)</li>
-                        <li><i class="fas fa-check-circle"></i> Rekomendasi perbaikan dengan prioritas risiko</li>
-                        <li><i class="fas fa-check-circle"></i> Konsultasi follow-up 30 menit untuk pembahasan hasil</li>
-                    </ul>
-                    <div class="product-details-duitku">
-                        <p class="price-duitku">Rp 250.000</p>
-                        <button class="btn btn-primary btn-buy-duitku" data-name="Analisis Keamanan Web" data-price="250000">
-                            <span>Beli Sekarang</span>
-                            <i class="fas fa-shopping-cart"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="portfolio" class="portfolio section" data-aos="fade-up">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Portfolio</h2>
-                <p class="section-subtitle">My latest works and projects</p>
-            </div>
-            <div class="portfolio-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="web">Web Development</button>
-                <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
-                <button class="filter-btn" data-filter="system">System Admin</button>
-            </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-item" data-category="mobile">
-                    <div class="portfolio-image">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h3>E-Absensi SPP</h3>
-                                <p>Aplikasi absensi dan pembayaran SPP dengan QR Code menggunakan Flutter</p>
-                                <div class="portfolio-links">
-                                    <a href="https://github.com/Hanzamas/E-AbsensiSPP" target="_blank" class="portfolio-link"><i class="fab fa-github"></i></a>
-                                </div>
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">About Me</h2>
+                    <p class="section-header__subtitle">Get to know me better</p>
+                </header>
+                
+                <div class="about__content">
+                    <div class="about__text">
+                        <article class="about__story">
+                            <h3 class="about__heading">Hello! I'm a passionate IT professional</h3>
+                            <p class="about__paragraph">
+                                With growing experience in software development, system administration, and digital innovation, 
+                                I specialize in creating robust solutions that bridge technology and creativity.
+                            </p>
+                            <p class="about__paragraph">
+                                My journey in IT has led me through various domains including web development, 
+                                mobile applications, cloud infrastructure, and emerging technologies. I believe in 
+                                continuous learning and staying updated with the latest trends in technology.
+                            </p>
+                        </article>
+                        
+                        <!-- Statistics -->
+                        <div class="about__stats">
+                            <div class="stat">
+                                <span class="stat__number">50+</span>
+                                <span class="stat__label">Projects Completed</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat__number">5+</span>
+                                <span class="stat__label">Years Experience</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat__number">30+</span>
+                                <span class="stat__label">Happy Clients</span>
                             </div>
                         </div>
                     </div>
-                    <div class="portfolio-content">
-                        <h4>E-Absensi SPP</h4>
-                        <span class="portfolio-category">Mobile Development</span>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="mobile">
-                    <div class="portfolio-image">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h3>KEMBANGDAMAN</h3>
-                                <p>Aplikasi Webview Kemenag untuk pengurusan online layanan Kementerian Agama</p>
-                                <div class="portfolio-links">
-                                    <a href="https://github.com/Hanzamas/KEMBANGDAMAN" target="_blank" class="portfolio-link"><i class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h4>KEMBANGDAMAN</h4>
-                        <span class="portfolio-category">Mobile Development</span>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="web">
-                    <div class="portfolio-image">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h3>SimpelMas</h3>
-                                <p>Aplikasi survey Kemenag berbasis PHP Native</p>
-                                <div class="portfolio-links">
-                                    <a href="https://github.com/Hanzamas/SimpelMas" target="_blank" class="portfolio-link"><i class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h4>SimpelMas</h4>
-                        <span class="portfolio-category">Web Development</span>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="system">
-                    <div class="portfolio-image" style="background-image: url('assets/jaringan.jpg'); background-size: cover; background-position: center;">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h3>Network Infrastructure</h3>
-                                <p>Implementasi dan konfigurasi jaringan untuk organisasi</p>
-                                <div class="portfolio-links">
-                                    <a href="#" class="portfolio-link"><i class="fas fa-search-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h4>Network Infrastructure</h4>
-                        <span class="portfolio-category">System Administration</span>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="system">
-                    <div class="portfolio-image" style="background-image: url('assets/server.jpg'); background-size: cover; background-position: center;">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h3>Server Management</h3>
-                                <p>Konfigurasi dan pemeliharaan server untuk layanan web</p>
-                                <div class="portfolio-links">
-                                    <a href="#" class="portfolio-link"><i class="fas fa-search-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h4>Server Management</h4>
-                        <span class="portfolio-category">System Administration</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>    <!-- Skills Section -->
-    <section id="skills" class="skills section" data-aos="fade-up">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Skills & Technologies</h2>
-                <p class="section-subtitle">My technical expertise as a junior developer across different domains</p>
-            </div>
-            <div class="skills-content">
-                <!-- Skill Categories with Modern Cards -->
-                <div class="skills-grid">
-                    <!-- Mobile Development -->
-                    <div class="skill-category-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="category-header">
-                            <div class="category-icon">
-                                <i class="fas fa-mobile-alt"></i>
-                            </div>
-                            <h3>Mobile Development</h3>
-                            <p>Building cross-platform mobile applications</p>
-                        </div>
-                        <div class="skills-list-modern">
-                            <div class="skill-card" data-skill="flutter">
-                                <div class="skill-icon">
-                                    <i class="fab fa-flutter"></i>
-                                </div>
-                                <div class="skill-info-modern">
-                                    <span class="skill-name">Flutter</span>
-                                    <div class="skill-level">Junior</div>
-                                </div>
-                                <div class="skill-badge">Learning</div>
-                            </div>
-                            
-                            <div class="skill-card" data-skill="android">
-                                <div class="skill-icon">
-                                    <i class="fab fa-android"></i>
-                                </div>
-                                <div class="skill-info-modern">
-                                    <span class="skill-name">Android</span>
-                                    <div class="skill-level">Junior</div>
-                                </div>
-                                <div class="skill-badge">Learning</div>
-                            </div>
-                            
-                            <div class="skill-card" data-skill="react-native">
-                                <div class="skill-icon">
-                                    <i class="fab fa-react"></i>
-                                </div>
-                                <div class="skill-info-modern">
-                                    <span class="skill-name">React Native</span>
-                                    <div class="skill-level">Junior</div>
-                                </div>
-                                <div class="skill-badge">Learning</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Frontend Development -->
-                    <div class="skill-category-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="category-header">
-                            <div class="category-icon">
+                    
+                    <div class="about__visual">
+                        <div class="about__tech-icons" aria-hidden="true">
+                            <div class="tech-icon tech-icon--floating">
                                 <i class="fas fa-code"></i>
                             </div>
-                            <h3>Frontend Development</h3>
-                            <p>Creating beautiful and interactive user interfaces</p>
-                        </div>
-                        <div class="skills-list-modern">
-                            <div class="skill-card" data-skill="html">
-                                <div class="skill-icon">
-                                    <i class="fab fa-html5"></i>
-                                </div>
-                                <div class="skill-info-modern">
-                                    <span class="skill-name">HTML5</span>
-                                    <div class="skill-level">Junior</div>
-                                </div>
-                                <div class="skill-badge">Learning</div>
+                            <div class="tech-icon tech-icon--floating">
+                                <i class="fas fa-database"></i>
                             </div>
-                            
-                            <div class="skill-card" data-skill="css">
-                                <div class="skill-icon">
-                                    <i class="fab fa-css3-alt"></i>
-                                </div>
-                                <div class="skill-info-modern">
-                                    <span class="skill-name">CSS3</span>
-                                    <div class="skill-level">Junior</div>
-                                </div>
-                                <div class="skill-badge">Learning</div>
+                            <div class="tech-icon tech-icon--floating">
+                                <i class="fas fa-cloud"></i>
                             </div>
-                            
-                            <div class="skill-card" data-skill="javascript">
-                                <div class="skill-icon">
-                                    <i class="fab fa-js-square"></i>
-                                </div>
-                                <div class="skill-info-modern">
-                                    <span class="skill-name">JavaScript</span>
-                                    <div class="skill-level">Junior</div>
-                                </div>
-                                <div class="skill-badge">Learning</div>
-                            </div>
-                            
-                            <div class="skill-card" data-skill="react">
-                                <div class="skill-icon">
-                                    <i class="fab fa-react"></i>
-                                </div>
-                                <div class="skill-info-modern">
-                                    <span class="skill-name">React.js</span>
-                                    <div class="skill-level">Junior</div>
-                                </div>
-                                <div class="skill-badge">Learning</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Backend Development -->
-                    <div class="skill-category-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="category-header">
-                            <div class="category-icon">
-                                <i class="fas fa-server"></i>
-                            </div>
-                            <h3>Backend Development</h3>
-                            <p>Building robust and scalable server-side applications</p>
-                        </div>
-                        <div class="skills-list-modern">
-                            <div class="skill-card" data-skill="nodejs">
-                                <div class="skill-icon">
-                                    <i class="fab fa-node-js"></i>
-                                </div>
-                                <div class="skill-info-modern">
-                                    <span class="skill-name">Node.js</span>
-                                    <div class="skill-level">Junior</div>
-                                </div>
-                                <div class="skill-badge">Learning</div>
-                            </div>
-                            
-                            <div class="skill-card" data-skill="python">
-                                <div class="skill-icon">
-                                    <i class="fab fa-python"></i>
-                                </div>
-                                <div class="skill-info-modern">
-                                    <span class="skill-name">Python</span>
-                                    <div class="skill-level">Junior</div>
-                                </div>
-                                <div class="skill-badge">Learning</div>
-                            </div>
-                            
-                            <div class="skill-card" data-skill="php">
-                                <div class="skill-icon">
-                                    <i class="fab fa-php"></i>
-                                </div>
-                                <div class="skill-info-modern">
-                                    <span class="skill-name">PHP</span>
-                                    <div class="skill-level">Junior</div>
-                                </div>
-                                <div class="skill-badge">Learning</div>
-                            </div>
-                            
-                            <div class="skill-card" data-skill="database">
-                                <div class="skill-icon">
-                                    <i class="fas fa-database"></i>
-                                </div>
-                                <div class="skill-info-modern">
-                                    <span class="skill-name">Database</span>
-                                    <div class="skill-level">Junior</div>
-                                </div>
-                                <div class="skill-badge">Learning</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Network & Infrastructure -->
-                    <div class="skill-category-card" data-aos="fade-up" data-aos-delay="400">
-                        <div class="category-header">
-                            <div class="category-icon">
-                                <i class="fas fa-network-wired"></i>
-                            </div>
-                            <h3>Network & Infrastructure</h3>
-                            <p>Network engineering and system administration</p>
-                        </div>
-                        <div class="skills-list-modern">
-                            <div class="skill-card" data-skill="networking">
-                                <div class="skill-icon">
-                                    <i class="fas fa-wifi"></i>
-                                </div>
-                                <div class="skill-info-modern">
-                                    <span class="skill-name">Network Engineering</span>
-                                    <div class="skill-level">Junior</div>
-                                </div>
-                                <div class="skill-badge">Learning</div>
-                            </div>
-                            
-                            <div class="skill-card" data-skill="sysadmin">
-                                <div class="skill-icon">
-                                    <i class="fas fa-server"></i>
-                                </div>
-                                <div class="skill-info-modern">
-                                    <span class="skill-name">System Admin</span>
-                                    <div class="skill-level">Junior</div>
-                                </div>
-                                <div class="skill-badge">Learning</div>
-                            </div>
-                            
-                            <div class="skill-card" data-skill="security">
-                                <div class="skill-icon">
-                                    <i class="fas fa-shield-alt"></i>
-                                </div>
-                                <div class="skill-info-modern">
-                                    <span class="skill-name">Network Security</span>
-                                    <div class="skill-level">Junior</div>
-                                </div>
-                                <div class="skill-badge">Learning</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- DevOps & Support -->
-                    <div class="skill-category-card" data-aos="fade-up" data-aos-delay="500">
-                        <div class="category-header">
-                            <div class="category-icon">
-                                <i class="fas fa-tools"></i>
-                            </div>
-                            <h3>DevOps & Support</h3>
-                            <p>DevOps practices and technical support</p>
-                        </div>
-                        <div class="skills-list-modern">
-                            <div class="skill-card" data-skill="devops">
-                                <div class="skill-icon">
-                                    <i class="fas fa-cogs"></i>
-                                </div>
-                                <div class="skill-info-modern">
-                                    <span class="skill-name">DevOps</span>
-                                    <div class="skill-level">Junior</div>
-                                </div>
-                                <div class="skill-badge">Learning</div>
-                            </div>
-                            
-                            <div class="skill-card" data-skill="support">
-                                <div class="skill-icon">
-                                    <i class="fas fa-headset"></i>
-                                </div>
-                                <div class="skill-info-modern">
-                                    <span class="skill-name">IT Support</span>
-                                    <div class="skill-level">Junior</div>
-                                </div>
-                                <div class="skill-badge">Learning</div>
-                            </div>
-                            
-                            <div class="skill-card" data-skill="iot">
-                                <div class="skill-icon">
-                                    <i class="fas fa-microchip"></i>
-                                </div>
-                                <div class="skill-info-modern">
-                                    <span class="skill-name">IoT Engineering</span>
-                                    <div class="skill-level">Junior</div>
-                                </div>
-                                <div class="skill-badge">Learning</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- IT Consultant -->
-                    <div class="skill-category-card" data-aos="fade-up" data-aos-delay="600">
-                        <div class="category-header">
-                            <div class="category-icon">
-                                <i class="fas fa-user-tie"></i>
-                            </div>
-                            <h3>IT Consultant</h3>
-                            <p>Technology consulting and business solutions</p>
-                        </div>
-                        <div class="skills-list-modern">
-                            <div class="skill-card" data-skill="strategy">
-                                <div class="skill-icon">
-                                    <i class="fas fa-chart-line"></i>
-                                </div>
-                                <div class="skill-info-modern">
-                                    <span class="skill-name">Tech Strategy</span>
-                                    <div class="skill-level">Junior</div>
-                                </div>
-                                <div class="skill-badge">Learning</div>
-                            </div>
-                            
-                            <div class="skill-card" data-skill="analysis">
-                                <div class="skill-icon">
-                                    <i class="fas fa-analytics"></i>
-                                </div>
-                                <div class="skill-info-modern">
-                                    <span class="skill-name">Business Analysis</span>
-                                    <div class="skill-level">Junior</div>
-                                </div>
-                                <div class="skill-badge">Learning</div>
-                            </div>
-                            
-                            <div class="skill-card" data-skill="project">
-                                <div class="skill-icon">
-                                    <i class="fas fa-tasks"></i>
-                                </div>
-                                <div class="skill-info-modern">
-                                    <span class="skill-name">Project Management</span>
-                                    <div class="skill-level">Junior</div>
-                                </div>
-                                <div class="skill-badge">Learning</div>
-                            </div>
-                            
-                            <div class="skill-card" data-skill="optimization">
-                                <div class="skill-icon">
-                                    <i class="fas fa-tachometer-alt"></i>
-                                </div>
-                                <div class="skill-info-modern">
-                                    <span class="skill-name">Process Optimization</span>
-                                    <div class="skill-level">Junior</div>
-                                </div>
-                                <div class="skill-badge">Learning</div>
+                            <div class="tech-icon tech-icon--floating">
+                                <i class="fas fa-mobile-alt"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div></section>    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section" data-aos="fade-up">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Client Testimonials</h2>
-                <p class="section-subtitle">What my clients say about working with me</p>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Services</h2>
+                    <p class="section-header__subtitle">What I can do for you</p>
+                </header>
+                
+                <div class="services__grid">
+                    <article class="service">
+                        <header class="service__header">
+                            <div class="service__icon">
+                                <i class="fas fa-laptop-code" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="service__title">Web Development</h3>
+                        </header>
+                        <p class="service__description">Custom websites and web applications built with modern technologies and best practices.</p>
+                        <ul class="service__features">
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>Responsive Design</span>
+                            </li>
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>Modern Frameworks</span>
+                            </li>
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>SEO Optimized</span>
+                            </li>
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>Fast Loading</span>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article class="service">
+                        <header class="service__header">
+                            <div class="service__icon">
+                                <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="service__title">Mobile Development</h3>
+                        </header>
+                        <p class="service__description">Cross-platform mobile applications that work seamlessly on iOS and Android devices.</p>
+                        <ul class="service__features">
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>Cross-Platform</span>
+                            </li>
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>Native Performance</span>
+                            </li>
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>Offline Support</span>
+                            </li>
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>Push Notifications</span>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article class="service">
+                        <header class="service__header">
+                            <div class="service__icon">
+                                <i class="fas fa-cloud" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="service__title">Cloud Solutions</h3>
+                        </header>
+                        <p class="service__description">Scalable cloud infrastructure and deployment solutions for your applications.</p>
+                        <ul class="service__features">
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>AWS/Azure Setup</span>
+                            </li>
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>Auto Scaling</span>
+                            </li>
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>Load Balancing</span>
+                            </li>
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>Monitoring</span>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article class="service">
+                        <header class="service__header">
+                            <div class="service__icon">
+                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="service__title">Cybersecurity</h3>
+                        </header>
+                        <p class="service__description">Comprehensive security solutions to protect your digital assets and data.</p>
+                        <ul class="service__features">
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>Security Audits</span>
+                            </li>
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>Penetration Testing</span>
+                            </li>
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>Compliance</span>
+                            </li>
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>Training</span>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article class="service">
+                        <header class="service__header">
+                            <div class="service__icon">
+                                <i class="fas fa-database" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="service__title">Database Design</h3>
+                        </header>
+                        <p class="service__description">Efficient database architecture and optimization for high-performance applications.</p>
+                        <ul class="service__features">
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>Schema Design</span>
+                            </li>
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>Performance Tuning</span>
+                            </li>
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>Data Migration</span>
+                            </li>
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>Backup Strategy</span>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article class="service">
+                        <header class="service__header">
+                            <div class="service__icon">
+                                <i class="fas fa-users-cog" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="service__title">IT Consulting</h3>
+                        </header>
+                        <p class="service__description">Strategic technology consulting to help your business grow and scale efficiently.</p>
+                        <ul class="service__features">
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>Technology Strategy</span>
+                            </li>
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>Digital Transformation</span>
+                            </li>
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>Process Optimization</span>
+                            </li>
+                            <li class="service__feature">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <span>Team Training</span>
+                            </li>
+                        </ul>
+                    </article>
+                </div>
             </div>
-            <div class="testimonials-container">
-                <div class="testimonials-grid">
-                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="testimonial-content">
-                            <div class="quote-icon">
-                                <i class="fas fa-quote-left"></i>
-                            </div>
-                            <p class="testimonial-text">
-                                "Hanzamas delivered an exceptional e-commerce platform that exceeded our expectations. 
-                                The attention to detail and modern design approach really made our business stand out."
-                            </p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">
-                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="Client">
-                                <div class="avatar-border"></div>
-                            </div>
-                            <div class="author-info">
-                                <h4>Ahmad Rahman</h4>
-                                <span>CEO, TechStart Indonesia</span>
-                            </div>
-                        </div>
-                    </div>
+        </section>
 
-                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="testimonial-content">
-                            <div class="quote-icon">
-                                <i class="fas fa-quote-left"></i>
-                            </div>
-                            <p class="testimonial-text">
-                                "Working with Hanzamas was a game-changer for our mobile app project. 
-                                The cross-platform solution delivered exactly what we needed with outstanding performance."
-                            </p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="portfolio">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Portfolio</h2>
+                    <p class="section-header__subtitle">My latest works and projects</p>
+                </header>
+                
+                <!-- Portfolio Filter -->
+                <div class="portfolio__filters">
+                    <input type="radio" id="filter-all" name="portfolio-filter" value="all" checked>
+                    <label for="filter-all" class="filter-btn">All</label>
+                    
+                    <input type="radio" id="filter-web" name="portfolio-filter" value="web">
+                    <label for="filter-web" class="filter-btn">Web Development</label>
+                    
+                    <input type="radio" id="filter-mobile" name="portfolio-filter" value="mobile">
+                    <label for="filter-mobile" class="filter-btn">Mobile Apps</label>
+                    
+                    <input type="radio" id="filter-system" name="portfolio-filter" value="system">
+                    <label for="filter-system" class="filter-btn">System Admin</label>
+                </div>
+                
+                <!-- Portfolio Grid -->
+                <div class="portfolio__grid">
+                    <article class="portfolio-item" data-category="mobile">
+                        <div class="portfolio-item__image">
+                            <div class="portfolio-item__overlay">
+                                <div class="portfolio-item__content">
+                                    <h3 class="portfolio-item__title">E-Absensi SPP</h3>
+                                    <p class="portfolio-item__description">Aplikasi absensi dan pembayaran SPP dengan QR Code menggunakan Flutter</p>
+                                    <div class="portfolio-item__links">
+                                        <a href="https://github.com/Hanzamas/E-AbsensiSPP" target="_blank" 
+                                           class="portfolio-item__link" rel="noopener noreferrer">
+                                            <i class="fab fa-github" aria-hidden="true"></i>
+                                            <span class="sr-only">View on GitHub</span>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">
-                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b0e7?w=100&h=100&fit=crop&crop=face" alt="Client">
-                                <div class="avatar-border"></div>
-                            </div>
-                            <div class="author-info">
-                                <h4>Sarah Melati</h4>
-                                <span>Product Manager, FinTech Solutions</span>
-                            </div>
-                        </div>
-                    </div>
+                        <footer class="portfolio-item__footer">
+                            <h4 class="portfolio-item__name">E-Absensi SPP</h4>
+                            <span class="portfolio-item__category">Mobile Development</span>
+                        </footer>
+                    </article>
 
-                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="testimonial-content">
-                            <div class="quote-icon">
-                                <i class="fas fa-quote-left"></i>
-                            </div>
-                            <p class="testimonial-text">
-                                "The cloud infrastructure setup was seamless and professional. Our application now handles 
-                                10x more traffic with zero downtime. Highly recommended!"
-                            </p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Client">
-                                <div class="avatar-border"></div>
-                            </div>
-                            <div class="author-info">
-                                <h4>Budi Santoso</h4>
-                                <span>CTO, Digital Innovation Ltd</span>
+                    <article class="portfolio-item" data-category="mobile">
+                        <div class="portfolio-item__image">
+                            <div class="portfolio-item__overlay">
+                                <div class="portfolio-item__content">
+                                    <h3 class="portfolio-item__title">KEMBANGDAMAN</h3>
+                                    <p class="portfolio-item__description">Aplikasi Webview Kemenag untuk pengurusan online layanan Kementerian Agama</p>
+                                    <div class="portfolio-item__links">
+                                        <a href="https://github.com/Hanzamas/KEMBANGDAMAN" target="_blank" 
+                                           class="portfolio-item__link" rel="noopener noreferrer">
+                                            <i class="fab fa-github" aria-hidden="true"></i>
+                                            <span class="sr-only">View on GitHub</span>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <footer class="portfolio-item__footer">
+                            <h4 class="portfolio-item__name">KEMBANGDAMAN</h4>
+                            <span class="portfolio-item__category">Mobile Development</span>
+                        </footer>
+                    </article>
 
-                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
-                        <div class="testimonial-content">
-                            <div class="quote-icon">
-                                <i class="fas fa-quote-left"></i>
-                            </div>
-                            <p class="testimonial-text">
-                                "Exceptional security consulting that helped us achieve compliance and protect our data. 
-                                The comprehensive approach gave us complete peace of mind."
-                            </p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">
-                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Client">
-                                <div class="avatar-border"></div>
-                            </div>
-                            <div class="author-info">
-                                <h4>Rina Kartika</h4>
-                                <span>Security Officer, BankTech</span>
+                    <article class="portfolio-item" data-category="web">
+                        <div class="portfolio-item__image">
+                            <div class="portfolio-item__overlay">
+                                <div class="portfolio-item__content">
+                                    <h3 class="portfolio-item__title">SimpelMas</h3>
+                                    <p class="portfolio-item__description">Aplikasi survey Kemenag berbasis PHP Native</p>
+                                    <div class="portfolio-item__links">
+                                        <a href="https://github.com/Hanzamas/SimpelMas" target="_blank" 
+                                           class="portfolio-item__link" rel="noopener noreferrer">
+                                            <i class="fab fa-github" aria-hidden="true"></i>
+                                            <span class="sr-only">View on GitHub</span>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <footer class="portfolio-item__footer">
+                            <h4 class="portfolio-item__name">SimpelMas</h4>
+                            <span class="portfolio-item__category">Web Development</span>
+                        </footer>
+                    </article>
 
-                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="500">
-                        <div class="testimonial-content">
-                            <div class="quote-icon">
-                                <i class="fas fa-quote-left"></i>
-                            </div>
-                            <p class="testimonial-text">
-                                "The database optimization work resulted in 70% faster queries and improved user experience. 
-                                Technical expertise combined with clear communication."
-                            </p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+                    <article class="portfolio-item" data-category="system">
+                        <div class="portfolio-item__image" style="background-image: url('assets/jaringan.jpg');">
+                            <div class="portfolio-item__overlay">
+                                <div class="portfolio-item__content">
+                                    <h3 class="portfolio-item__title">Network Infrastructure</h3>
+                                    <p class="portfolio-item__description">Implementasi dan konfigurasi jaringan untuk organisasi</p>
+                                    <div class="portfolio-item__links">
+                                        <a href="#" class="portfolio-item__link">
+                                            <i class="fas fa-search-plus" aria-hidden="true"></i>
+                                            <span class="sr-only">View details</span>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">
-                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face" alt="Client">
-                                <div class="avatar-border"></div>
-                            </div>
-                            <div class="author-info">
-                                <h4>Dimas Pratama</h4>
-                                <span>Lead Developer, DataCorp</span>
-                            </div>
-                        </div>
-                    </div>
+                        <footer class="portfolio-item__footer">
+                            <h4 class="portfolio-item__name">Network Infrastructure</h4>
+                            <span class="portfolio-item__category">System Administration</span>
+                        </footer>
+                    </article>
 
-                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="600">
-                        <div class="testimonial-content">
-                            <div class="quote-icon">
-                                <i class="fas fa-quote-left"></i>
-                            </div>
-                            <p class="testimonial-text">
-                                "Strategic IT consulting that transformed our digital processes. The technology roadmap 
-                                provided clear direction for our company's growth."
-                            </p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+                    <article class="portfolio-item" data-category="system">
+                        <div class="portfolio-item__image" style="background-image: url('assets/server.jpg');">
+                            <div class="portfolio-item__overlay">
+                                <div class="portfolio-item__content">
+                                    <h3 class="portfolio-item__title">Server Management</h3>
+                                    <p class="portfolio-item__description">Konfigurasi dan pemeliharaan server untuk layanan web</p>
+                                    <div class="portfolio-item__links">
+                                        <a href="#" class="portfolio-item__link">
+                                            <i class="fas fa-search-plus" aria-hidden="true"></i>
+                                            <span class="sr-only">View details</span>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">
-                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&crop=face" alt="Client">
-                                <div class="avatar-border"></div>
+                        <footer class="portfolio-item__footer">
+                            <h4 class="portfolio-item__name">Server Management</h4>
+                            <span class="portfolio-item__category">System Administration</span>
+                        </footer>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Skills & Technologies</h2>
+                    <p class="section-header__subtitle">My technical expertise as a junior developer across different domains</p>
+                </header>
+                
+                <div class="skills__grid">
+                    <article class="skill-category">
+                        <header class="skill-category__header">
+                            <div class="skill-category__icon">
+                                <i class="fas fa-mobile-alt" aria-hidden="true"></i>
                             </div>
-                            <div class="author-info">
-                                <h4>Lisa Wijaya</h4>
-                                <span>VP Technology, Enterprise Solutions</span>
+                            <h3 class="skill-category__title">Mobile Development</h3>
+                            <p class="skill-category__description">Building cross-platform mobile applications</p>
+                        </header>
+                        <ul class="skill-category__skills">
+                            <li class="skill">
+                                <div class="skill__icon">
+                                    <i class="fab fa-flutter" aria-hidden="true"></i>
+                                </div>
+                                <div class="skill__info">
+                                    <span class="skill__name">Flutter</span>
+                                    <span class="skill__level">Junior</span>
+                                </div>
+                                <span class="skill__badge">Learning</span>
+                            </li>
+                            <li class="skill">
+                                <div class="skill__icon">
+                                    <i class="fab fa-android" aria-hidden="true"></i>
+                                </div>
+                                <div class="skill__info">
+                                    <span class="skill__name">Android</span>
+                                    <span class="skill__level">Junior</span>
+                                </div>
+                                <span class="skill__badge">Learning</span>
+                            </li>
+                            <li class="skill">
+                                <div class="skill__icon">
+                                    <i class="fab fa-react" aria-hidden="true"></i>
+                                </div>
+                                <div class="skill__info">
+                                    <span class="skill__name">React Native</span>
+                                    <span class="skill__level">Junior</span>
+                                </div>
+                                <span class="skill__badge">Learning</span>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article class="skill-category">
+                        <header class="skill-category__header">
+                            <div class="skill-category__icon">
+                                <i class="fas fa-code" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="skill-category__title">Frontend Development</h3>
+                            <p class="skill-category__description">Creating beautiful and interactive user interfaces</p>
+                        </header>
+                        <ul class="skill-category__skills">
+                            <li class="skill">
+                                <div class="skill__icon">
+                                    <i class="fab fa-html5" aria-hidden="true"></i>
+                                </div>
+                                <div class="skill__info">
+                                    <span class="skill__name">HTML5</span>
+                                    <span class="skill__level">Junior</span>
+                                </div>
+                                <span class="skill__badge">Learning</span>
+                            </li>
+                            <li class="skill">
+                                <div class="skill__icon">
+                                    <i class="fab fa-css3-alt" aria-hidden="true"></i>
+                                </div>
+                                <div class="skill__info">
+                                    <span class="skill__name">CSS3</span>
+                                    <span class="skill__level">Junior</span>
+                                </div>
+                                <span class="skill__badge">Learning</span>
+                            </li>
+                            <li class="skill">
+                                <div class="skill__icon">
+                                    <i class="fab fa-js-square" aria-hidden="true"></i>
+                                </div>
+                                <div class="skill__info">
+                                    <span class="skill__name">JavaScript</span>
+                                    <span class="skill__level">Junior</span>
+                                </div>
+                                <span class="skill__badge">Learning</span>
+                            </li>
+                            <li class="skill">
+                                <div class="skill__icon">
+                                    <i class="fab fa-react" aria-hidden="true"></i>
+                                </div>
+                                <div class="skill__info">
+                                    <span class="skill__name">React.js</span>
+                                    <span class="skill__level">Junior</span>
+                                </div>
+                                <span class="skill__badge">Learning</span>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article class="skill-category">
+                        <header class="skill-category__header">
+                            <div class="skill-category__icon">
+                                <i class="fas fa-server" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="skill-category__title">Backend Development</h3>
+                            <p class="skill-category__description">Building robust and scalable server-side applications</p>
+                        </header>
+                        <ul class="skill-category__skills">
+                            <li class="skill">
+                                <div class="skill__icon">
+                                    <i class="fab fa-node-js" aria-hidden="true"></i>
+                                </div>
+                                <div class="skill__info">
+                                    <span class="skill__name">Node.js</span>
+                                    <span class="skill__level">Junior</span>
+                                </div>
+                                <span class="skill__badge">Learning</span>
+                            </li>
+                            <li class="skill">
+                                <div class="skill__icon">
+                                    <i class="fab fa-python" aria-hidden="true"></i>
+                                </div>
+                                <div class="skill__info">
+                                    <span class="skill__name">Python</span>
+                                    <span class="skill__level">Junior</span>
+                                </div>
+                                <span class="skill__badge">Learning</span>
+                            </li>
+                            <li class="skill">
+                                <div class="skill__icon">
+                                    <i class="fab fa-php" aria-hidden="true"></i>
+                                </div>
+                                <div class="skill__info">
+                                    <span class="skill__name">PHP</span>
+                                    <span class="skill__level">Junior</span>
+                                </div>
+                                <span class="skill__badge">Learning</span>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article class="skill-category">
+                        <header class="skill-category__header">
+                            <div class="skill-category__icon">
+                                <i class="fas fa-network-wired" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="skill-category__title">Network & Infrastructure</h3>
+                            <p class="skill-category__description">Network engineering and system administration</p>
+                        </header>
+                        <ul class="skill-category__skills">
+                            <li class="skill">
+                                <div class="skill__icon">
+                                    <i class="fas fa-wifi" aria-hidden="true"></i>
+                                </div>
+                                <div class="skill__info">
+                                    <span class="skill__name">Network Engineering</span>
+                                    <span class="skill__level">Junior</span>
+                                </div>
+                                <span class="skill__badge">Learning</span>
+                            </li>
+                            <li class="skill">
+                                <div class="skill__icon">
+                                    <i class="fas fa-server" aria-hidden="true"></i>
+                                </div>
+                                <div class="skill__info">
+                                    <span class="skill__name">System Admin</span>
+                                    <span class="skill__level">Junior</span>
+                                </div>
+                                <span class="skill__badge">Learning</span>
+                            </li>
+                            <li class="skill">
+                                <div class="skill__icon">
+                                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                </div>
+                                <div class="skill__info">
+                                    <span class="skill__name">Network Security</span>
+                                    <span class="skill__level">Junior</span>
+                                </div>
+                                <span class="skill__badge">Learning</span>
+                            </li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Get In Touch</h2>
+                    <p class="section-header__subtitle">Let's work together on your next project</p>
+                </header>
+                
+                <div class="contact__content">
+                    <div class="contact__info">
+                        <div class="contact__item">
+                            <div class="contact__icon">
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                            </div>
+                            <div class="contact__details">
+                                <h4 class="contact__label">Email</h4>
+                                <a href="mailto:hilmibisri123@gmail.com" class="contact__value">hilmibisri123@gmail.com</a>
                             </div>
                         </div>
+                        
+                        <div class="contact__item">
+                            <div class="contact__icon">
+                                <i class="fas fa-phone" aria-hidden="true"></i>
+                            </div>
+                            <div class="contact__details">
+                                <h4 class="contact__label">Phone</h4>
+                                <a href="tel:+6283840557309" class="contact__value">+62 838 4055 7309</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact__item">
+                            <div class="contact__icon">
+                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            </div>
+                            <div class="contact__details">
+                                <h4 class="contact__label">Location</h4>
+                                <p class="contact__value">Perumahan Telang Perm, Telang, Kec. Kamal, Kabupaten Bangkalan, Jawa Timur 69162, Indonesia</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Social Links -->
+                        <nav class="contact__social" aria-label="Social media links">
+                            <a href="#" class="contact__social-link" aria-label="GitHub profile">
+                                <i class="fab fa-github" aria-hidden="true"></i>
+                            </a>
+                            <a href="#" class="contact__social-link" aria-label="LinkedIn profile">
+                                <i class="fab fa-linkedin" aria-hidden="true"></i>
+                            </a>
+                            <a href="#" class="contact__social-link" aria-label="Twitter profile">
+                                <i class="fab fa-twitter" aria-hidden="true"></i>
+                            </a>
+                            <a href="#" class="contact__social-link" aria-label="Instagram profile">
+                                <i class="fab fa-instagram" aria-hidden="true"></i>
+                            </a>
+                        </nav>
+                    </div>
+                    
+                    <div class="contact__form-container">
+                        <form class="contact__form" id="contactForm">
+                            <div class="form__group">
+                                <label for="name" class="form__label">Your Name *</label>
+                                <input type="text" id="name" name="name" class="form__input" required>
+                            </div>
+                            
+                            <div class="form__group">
+                                <label for="email" class="form__label">Your Email *</label>
+                                <input type="email" id="email" name="email" class="form__input" required>
+                            </div>
+                            
+                            <div class="form__group">
+                                <label for="phone" class="form__label">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form__input" placeholder="+62 812 3456 7890">
+                            </div>
+                            
+                            <div class="form__group">
+                                <label for="subject" class="form__label">Subject</label>
+                                <input type="text" id="subject" name="subject" class="form__input" placeholder="General Inquiry">
+                            </div>
+                            
+                            <div class="form__group">
+                                <label for="message" class="form__label">Your Message *</label>
+                                <textarea id="message" name="message" rows="5" class="form__textarea" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn--primary btn-submit">
+                                <span class="btn-text">Send Message</span>
+                                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                            </button>
+                            
+                            <div id="responseMessage" class="response-message" style="display: none;"></div>
+                        </form>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>    <!-- Contact Section -->
-    <section id="contact" class="contact section" data-aos="fade-up">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Let's work together on your next project</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Email</h4>
-                            <p>hilmibisri123@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Phone</h4>
-                            <p>+62 838 4055 7309</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Location</h4>
-                            <p>Perumahan Telang Perm, Telang, Kec. Kamal, Kabupaten Bangkalan, Jawa Timur 69162, Indonesia</p>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Your Name" required class="form-input">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Your Email" required class="form-input">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="subject" name="subject" placeholder="Subject" required class="form-input">
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required class="form-textarea"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            <span>Send Message</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2025 Hanzamas.tech. All rights reserved.</p>
-                <p>Made with <span class="heart">❤️</span> and lots of coffee</p>
+            <div class="footer__content">
+                <p class="footer__copyright">&copy; 2025 Hanzamas.tech. All rights reserved.</p>
+                <p class="footer__tagline">Made with <span class="footer__heart">❤️</span> and lots of coffee</p>
             </div>
         </div>
     </footer>
 
-    <!-- Modular JavaScript -->
-    <script type="module" src="js/main.js"></script>
+    <!-- Contact Form JavaScript -->
     <script src="js/contact.js"></script>
-
-    <!-- Form message styling -->
-    <style>
-        .form-message {
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: var(--border-radius);
-            display: flex;
-            align-items: center;
-            animation: fadeIn 0.3s ease-out;
-        }
-        
-        .form-message.success {
-            background-color: rgba(76, 175, 80, 0.2);
-            color: #4CAF50;
-            border-left: 4px solid #4CAF50;
-        }
-        
-        .form-message.error {
-            background-color: rgba(244, 67, 54, 0.2);
-            color: #F44336;
-            border-left: 4px solid #F44336;
-        }
-        
-        .form-message .message-content {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
 </body>
 </html>

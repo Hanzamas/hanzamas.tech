@@ -1,145 +1,162 @@
 /**
- * Contact Form Handler for Hanzamas.tech
- * This module handles the contact form submission to Netlify functions
+ * Contact Form Handler
+ * ==================
+ * Handles contact form submission with API integration
  */
 
-document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contactForm');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', handleContactFormSubmit);
-    }
-});
-
-/**
- * Handle the contact form submission
- * @param {Event} event - The form submit event
- */
-async function handleContactFormSubmit(event) {
-    event.preventDefault();
-    
-    const form = event.target;
-    const submitButton = form.querySelector('button[type="submit"]');
-    const originalButtonText = submitButton.innerHTML;
-    
-    // Get form data
-    const name = form.querySelector('[name="name"]').value;
-    const email = form.querySelector('[name="email"]').value;
-    const subject = form.querySelector('[name="subject"]').value;
-    const message = form.querySelector('[name="message"]').value;
-    
-    // Validate form
-    if (!name || !email || !message) {
-        showFormMessage('error', 'Please fill all required fields');
-        return;
+class ContactForm {
+    constructor() {
+        this.form = document.getElementById('contactForm');
+        this.responseMessage = document.getElementById('responseMessage');
+        this.submitBtn = this.form.querySelector('.btn-submit');
+        this.btnText = this.submitBtn.querySelector('.btn-text');
+        this.apiUrl = 'https://be.hanzamas.tech/api/payment/contact-form';
+        
+        this.init();
     }
     
-    // Email validation
-    if (!validateEmail(email)) {
-        showFormMessage('error', 'Please enter a valid email address');
-        return;
+    init() {
+        console.log('ContactForm init called');
+        if (this.form) {
+            console.log('Contact form found, adding event listener');
+            this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+        } else {
+            console.error('Contact form not found!');
+        }
     }
     
-    // Update button state
-    submitButton.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Sending...`;
-    submitButton.disabled = true;
-    
-    try {
-        // Get netlify function URL - works in both dev and production
-        const functionUrl = '/.netlify/functions/send-contact';
+    async handleSubmit(e) {
+        e.preventDefault();
         
-        console.log('Submitting form to:', functionUrl);
+        const formData = new FormData(this.form);
+        const data = Object.fromEntries(formData.entries());
         
-        // Submit to serverless function
-        const response = await fetch(functionUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name,
-                email,
-                subject,
-                message
-            })
-        });
+        // Remove empty optional fields
+        if (!data.phone) delete data.phone;
+        if (!data.subject) delete data.subject;
         
-        // Handle HTTP errors properly
-        if (!response.ok) {
-            const contentType = response.headers.get("content-type");
-            
-            if (contentType && contentType.includes("application/json")) {
-                // If response is JSON, try to parse error message
-                const errorData = await response.json();
-                throw new Error(errorData.error || `Server error: ${response.status}`);
-            } else {
-                // If response is not JSON (e.g., HTML error page), throw a generic error
-                console.error('Non-JSON error response:', await response.text());
-                throw new Error(`Server error (${response.status}): Function might not be deployed correctly`);
-            }
+        console.log('Form data:', data);
+        
+        // Validation
+        if (!this.validateForm(data)) {
+            return;
         }
         
-        // Show success message
-        showFormMessage('success', 'Your message has been sent successfully!');
+        // Show loading state
+        this.setLoading(true);
         
-        // Reset the form
-        form.reset();
+        try {
+            const response = await fetch(this.apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+            
+            console.log('Response status:', response.status);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const result = await response.json();
+            console.log('API Response:', result);
+            
+            if (result.status === 'success') {
+                this.showMessage(result.message || 'Your message has been sent successfully. We will get back to you soon!', 'success');
+                this.form.reset();
+            } else {
+                this.showMessage(result.message || 'Failed to send message. Please try again.', 'error');
+            }
+            
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            
+            // More specific error messages
+            if (error.name === 'TypeError' && error.message.includes('fetch')) {
+                this.showMessage('Unable to connect to server. Please check your internet connection and try again.', 'error');
+            } else if (error.message.includes('CORS')) {
+                this.showMessage('CORS error. Please contact the administrator.', 'error');
+            } else {
+                this.showMessage('An error occurred while sending your message. Please try again or contact us directly via email.', 'error');
+            }
+        } finally {
+            this.setLoading(false);
+        }
+    }
+    
+    validateForm(data) {
+        // Check required fields
+        if (!data.name || !data.email || !data.message) {
+            this.showMessage('Please fill in all required fields (Name, Email, Message).', 'error');
+            return false;
+        }
         
-    } catch (error) {
-        console.error("Error submitting contact form:", error);
-        showFormMessage('error', error.message || 'An error occurred. Please try again later.');
-    } finally {
-        // Restore button state
-        submitButton.innerHTML = originalButtonText;
-        submitButton.disabled = false;
-    }
-}
-
-/**
- * Display form submission message
- * @param {string} type - 'success' or 'error'
- * @param {string} message - The message to display
- */
-function showFormMessage(type, message) {
-    // Find or create message element
-    let messageEl = document.getElementById('formMessage');
-    
-    if (!messageEl) {
-        messageEl = document.createElement('div');
-        messageEl.id = 'formMessage';
-        const contactForm = document.getElementById('contactForm');
-        contactForm.parentNode.insertBefore(messageEl, contactForm.nextSibling);
+        // Validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(data.email)) {
+            this.showMessage('Please enter a valid email address.', 'error');
+            return false;
+        }
+        
+        // Validate message length
+        if (data.message.length < 10) {
+            this.showMessage('Please enter a message with at least 10 characters.', 'error');
+            return false;
+        }
+        
+        return true;
     }
     
-    // Set message content and style
-    messageEl.className = `form-message ${type}`;
-    messageEl.innerHTML = `
-        <div class="message-content">
-            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
-            ${message}
-        </div>
-    `;
-    
-    // Scroll to message
-    messageEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    
-    // Auto-hide after some time for success messages
-    if (type === 'success') {
-        setTimeout(() => {
-            messageEl.style.opacity = '0';
+    showMessage(message, type) {
+        this.responseMessage.textContent = message;
+        this.responseMessage.className = `response-message ${type}`;
+        this.responseMessage.style.display = 'block';
+        
+        // Scroll to message
+        this.responseMessage.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center' 
+        });
+        
+        // Auto-hide success messages after 8 seconds
+        if (type === 'success') {
             setTimeout(() => {
-                messageEl.remove();
-            }, 500);
-        }, 5000);
+                this.hideMessage();
+            }, 8000);
+        }
+    }
+    
+    hideMessage() {
+        this.responseMessage.style.display = 'none';
+    }
+    
+    setLoading(loading) {
+        if (loading) {
+            this.submitBtn.disabled = true;
+            this.submitBtn.classList.add('loading');
+            this.btnText.textContent = 'Sending...';
+        } else {
+            this.submitBtn.disabled = false;
+            this.submitBtn.classList.remove('loading');
+            this.btnText.textContent = 'Send Message';
+        }
     }
 }
 
-/**
- * Validate email format
- * @param {string} email - Email address to validate
- * @returns {boolean} - Whether email is valid
- */
-function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
+// Initialize contact form when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Contact form initializing...');
+    new ContactForm();
+});
+
+// Also handle if script loads after DOMContentLoaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        new ContactForm();
+    });
+} else {
+    new ContactForm();
 }

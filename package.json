@@ -1,35 +1,32 @@
 {
   "name": "hanzamas-tech-portfolio",
   "version": "1.0.0",
-  "description": "Modern IT portfolio landing page dengan nuansa anime",
+  "description": "Modern IT portfolio landing page dengan nuansa anime - optimized & simplified",
   "main": "index.html",
   "scripts": {
     "start": "live-server --port=3000 --open=/index.html",
     "dev": "live-server --port=3000 --open=/index.html --watch=.",
-    "mock-server": "node mock-server.js",
-    "dev-with-functions": "concurrently \"npm run dev\" \"npm run mock-server\"",
-    "test-email": "node test-email.js",
-    "build": "echo 'Building static files...' && mkdir -p dist && cp -r * dist/",
-    "deploy": "echo 'Deploying to production...'",
-    "lint": "echo 'Running linters...'",
-    "test": "echo 'Running tests...'"
+    "build": "echo 'Building static landing page...' && mkdir -p dist && cp -r * dist/",
+    "deploy": "echo 'Deploying landing page to production...'",
+    "clean": "echo 'Cleaning build files...'",
+    "preview": "live-server --port=8080 --open=/index.html --no-browser"
   },
   "keywords": [
     "portfolio",
-    "landing-page",
+    "landing-page", 
     "anime",
     "modern",
     "responsive",
     "html5",
     "css3",
     "javascript",
-    "it-professional"
+    "it-professional",
+    "optimized",
+    "performance"
   ],
   "author": "Hanzamas",
   "license": "MIT",
-  "dependencies": {
-    "nodemailer": "^6.9.5"
-  },
+  "dependencies": {},
   "devDependencies": {
     "live-server": "^1.2.2"
   },

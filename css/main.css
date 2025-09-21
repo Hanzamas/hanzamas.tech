@@ -1,0 +1,417 @@
+/**
+ * main.css - Core Layout & Structure
+ * ==================================
+ * Container, grid layouts, and main page structure
+ */
+
+/* ==============================================
+   LAYOUT FOUNDATION
+   ============================================== */
+
+/* Container */
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 var(--spacing-xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 var(--spacing-2xl);
+  }
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+}
+
+.section-header__title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-lg);
+  background: linear-gradient(135deg, var(--text-primary), var(--primary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-header__subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ==============================================
+   MAIN PAGE STRUCTURE
+   ============================================== */
+
+/* Main content wrapper */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Section base styles */
+.section {
+  position: relative;
+  padding: var(--spacing-4xl) 0;
+}
+
+.section--alt {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* ==============================================
+   GRID LAYOUTS
+   ============================================== */
+
+/* Basic grid utilities */
+.grid {
+  display: grid;
+}
+
+.grid--1 {
+  grid-template-columns: 1fr;
+}
+
+.grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid--gap-sm {
+  gap: var(--spacing-sm);
+}
+
+.grid--gap-md {
+  gap: var(--spacing-md);
+}
+
+.grid--gap-lg {
+  gap: var(--spacing-lg);
+}
+
+.grid--gap-xl {
+  gap: var(--spacing-xl);
+}
+
+.grid--gap-2xl {
+  gap: var(--spacing-2xl);
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 1023px) {
+  .grid--2 {
+    grid-template-columns: 1fr;
+  }
+  
+  .grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .grid--3 {
+    grid-template-columns: 1fr;
+  }
+  
+  .grid--auto-fit {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==============================================
+   FLEX LAYOUTS
+   ============================================== */
+
+.flex {
+  display: flex;
+}
+
+.flex--center {
+  align-items: center;
+  justify-content: center;
+}
+
+.flex--between {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex--column {
+  flex-direction: column;
+}
+
+.flex--wrap {
+  flex-wrap: wrap;
+}
+
+.flex--gap-sm {
+  gap: var(--spacing-sm);
+}
+
+.flex--gap-md {
+  gap: var(--spacing-md);
+}
+
+.flex--gap-lg {
+  gap: var(--spacing-lg);
+}
+
+/* ==============================================
+   POSITIONING & Z-INDEX
+   ============================================== */
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.sticky {
+  position: sticky;
+}
+
+/* Common positioning patterns */
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.absolute-top-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.absolute-top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.absolute-bottom-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.absolute-bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+/* ==============================================
+   CONTENT FLOW & SPACING
+   ============================================== */
+
+/* Flow utilities for better content spacing */
+.flow > * + * {
+  margin-top: var(--spacing-md);
+}
+
+.flow--sm > * + * {
+  margin-top: var(--spacing-sm);
+}
+
+.flow--lg > * + * {
+  margin-top: var(--spacing-lg);
+}
+
+.flow--xl > * + * {
+  margin-top: var(--spacing-xl);
+}
+
+/* Stack layout for consistent vertical spacing */
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.stack--sm {
+  gap: var(--spacing-sm);
+}
+
+.stack--md {
+  gap: var(--spacing-md);
+}
+
+.stack--lg {
+  gap: var(--spacing-lg);
+}
+
+.stack--xl {
+  gap: var(--spacing-xl);
+}
+
+/* ==============================================
+   BACKGROUND & OVERLAYS
+   ============================================== */
+
+.bg-overlay {
+  position: relative;
+}
+
+.bg-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: -1;
+}
+
+.bg-gradient-primary {
+  background: var(--bg-primary);
+}
+
+.bg-gradient-secondary {
+  background: var(--bg-secondary);
+}
+
+.bg-card {
+  background: var(--bg-card);
+}
+
+.bg-dark {
+  background: var(--bg-dark);
+}
+
+.bg-darker {
+  background: var(--bg-darker);
+}
+
+/* ==============================================
+   RESPONSIVE UTILITIES
+   ============================================== */
+
+/* Hide/show utilities */
+.hidden {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .hidden-mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .hidden-desktop {
+    display: none;
+  }
+}
+
+/* Responsive text alignment */
+@media (max-width: 767px) {
+  .text-center-mobile {
+    text-align: center;
+  }
+}
+
+/* ==============================================
+   ANIMATION UTILITIES
+   ============================================== */
+
+.animated {
+  animation-duration: 0.8s;
+  animation-fill-mode: both;
+}
+
+.delay-1 {
+  animation-delay: 0.1s;
+}
+
+.delay-2 {
+  animation-delay: 0.2s;
+}
+
+.delay-3 {
+  animation-delay: 0.3s;
+}
+
+.delay-4 {
+  animation-delay: 0.4s;
+}
+
+.delay-5 {
+  animation-delay: 0.5s;
+}
+
+/* ==============================================
+   ACCESSIBILITY HELPERS
+   ============================================== */
+
+/* Focus visible styles */
+.focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animated {
+    animation: none !important;
+  }
+  
+  * {
+    transition: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .section-header__title {
+    -webkit-text-fill-color: unset;
+    background: unset;
+    color: var(--text-primary);
+  }
+}
+
+/* ==============================================
+   PRINT STYLES
+   ============================================== */
+
+@media print {
+  .hidden-print {
+    display: none !important;
+  }
+  
+  .section {
+    break-inside: avoid;
+    padding: var(--spacing-lg) 0;
+  }
+  
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+}
